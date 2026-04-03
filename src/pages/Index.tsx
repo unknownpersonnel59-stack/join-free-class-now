@@ -51,10 +51,15 @@ const CTAButton = ({ children }: { children: React.ReactNode }) => (
 );
 
 const images = [
-  "https://courageous-kleicha-b4c7b0.netlify.app/1.jpg",
-  "https://courageous-kleicha-b4c7b0.netlify.app/2.jpg",
-  "https://courageous-kleicha-b4c7b0.netlify.app/3.jpg",
-  "https://courageous-kleicha-b4c7b0.netlify.app/4.jpg",
+  "/images/proof1.jpg",
+  "/images/proof2.jpg",
+  "/images/proof3.jpg",
+  "/images/proof4.jpg",
+];
+
+const videos = [
+  { src: "/images/behind-the-scenes.mp4", label: "Behind the Scenes" },
+  { src: "/images/day-in-the-life.mp4", label: "Day in the Life" },
 ];
 
 const Index = () => {
