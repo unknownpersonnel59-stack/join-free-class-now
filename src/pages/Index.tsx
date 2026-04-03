@@ -140,7 +140,22 @@ const Index = () => {
           ))}
         </section>
 
-        {/* Final CTA */}
+        {/* Video Section */}
+        <section className="flex flex-col gap-3 mb-10">
+          {videos.map((video, i) => (
+            <div key={i} className="rounded-xl overflow-hidden bg-secondary border border-border">
+              <video
+                src={video.src}
+                controls
+                playsInline
+                preload="metadata"
+                className="w-full aspect-video object-cover"
+              />
+              <p className="text-center text-xs text-muted-foreground py-2 font-medium">{video.label}</p>
+            </div>
+          ))}
+        </section>
+
         <section className="text-center mb-10">
           <p className="text-foreground font-semibold text-lg mb-2">
             Everything you just saw started with one decision…
