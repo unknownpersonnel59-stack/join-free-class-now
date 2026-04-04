@@ -50,16 +50,13 @@ const CTAButton = ({ children }: { children: React.ReactNode }) => (
   </a>
 );
 
-const images = [
-  "/images/proof1.jpg",
-  "/images/proof2.jpg",
-  "/images/proof3.jpg",
-  "/images/proof4.jpg",
-];
-
-const videos = [
-  { src: "/images/behind-the-scenes.mp4", label: "Behind the Scenes" },
-  { src: "/images/day-in-the-life.mp4", label: "Day in the Life" },
+const galleryItems = [
+  { type: "image", src: "/images/proof1.jpg", label: "✅ Living life on my own terms" },
+  { type: "image", src: "/images/proof2.jpg", label: "💰 ₦6M in 29 days — same method you'll learn" },
+  { type: "video", src: "/images/behind-the-scenes.mp4", label: "🎬 A day in the life — making money online" },
+  { type: "image", src: "/images/proof3.jpg", label: "🚗 ₦100M dream car — unlocked" },
+  { type: "image", src: "/images/proof4.jpg", label: "🔥 Experiences money can buy" },
+  { type: "video", src: "/images/day-in-the-life.mp4", label: "🎥 Behind the scenes of my online business" },
 ];
 
 const Index = () => {
