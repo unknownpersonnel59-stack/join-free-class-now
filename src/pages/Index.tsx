@@ -50,16 +50,13 @@ const CTAButton = ({ children }: { children: React.ReactNode }) => (
   </a>
 );
 
-const images = [
-  "/images/proof1.jpg",
-  "/images/proof2.jpg",
-  "/images/proof3.jpg",
-  "/images/proof4.jpg",
-];
-
-const videos = [
-  { src: "/images/behind-the-scenes.mp4", label: "Behind the Scenes" },
-  { src: "/images/day-in-the-life.mp4", label: "Day in the Life" },
+const galleryItems = [
+  { type: "image", src: "/images/proof1.jpg", label: "✅ Living life on my own terms" },
+  { type: "image", src: "/images/proof2.jpg", label: "💰 ₦6M in 29 days — same method you'll learn" },
+  { type: "video", src: "/images/behind-the-scenes.mp4", label: "🎬 A day in the life — making money online" },
+  { type: "image", src: "/images/proof3.jpg", label: "🚗 ₦100M dream car — unlocked" },
+  { type: "image", src: "/images/proof4.jpg", label: "🔥 Experiences money can buy" },
+  { type: "video", src: "/images/day-in-the-life.mp4", label: "🎥 Behind the scenes of my online business" },
 ];
 
 const Index = () => {
@@ -131,36 +128,33 @@ const Index = () => {
           <CTAButton>JOIN FREE CLASS NOW →</CTAButton>
         </section>
 
-        {/* Image Gallery */}
+        {/* Gallery Grid */}
         <section className="grid grid-cols-2 gap-2 mb-10">
-          {images.map((src, i) => (
-            <div key={i} className="rounded-xl overflow-hidden aspect-square bg-secondary border border-border hover:scale-[1.02] transition-transform duration-200">
-              <img src={src} alt={`Proof ${i + 1}`} className="w-full h-full object-cover" />
-            </div>
-          ))}
-        </section>
-
-        {/* Video Section */}
-        <section className="flex flex-col gap-3 mb-10">
-          {videos.map((video, i) => (
-            <div key={i} className="rounded-xl overflow-hidden bg-secondary border border-border">
-              <div className="relative w-full aspect-video bg-black/50 flex items-center justify-center">
-                <video
-                  src={video.src}
-                  preload="metadata"
-                  className="w-full h-full object-cover pointer-events-none"
-                  muted
-                  tabIndex={-1}
-                />
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
-                    <svg viewBox="0 0 24 24" className="w-7 h-7 fill-white ml-1">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
+          {galleryItems.map((item, i) => (
+            <div key={i} className="rounded-xl overflow-hidden aspect-[3/4] bg-secondary border border-border relative group">
+              {item.type === "image" ? (
+                <img src={item.src} alt={item.label} className="w-full h-full object-cover" />
+              ) : (
+                <>
+                  <video
+                    src={item.src}
+                    preload="metadata"
+                    muted
+                    className="w-full h-full object-cover pointer-events-none"
+                    tabIndex={-1}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
+                      <svg viewBox="0 0 24 24" className="w-6 h-6 fill-white ml-0.5">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
                   </div>
-                </div>
+                </>
+              )}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 pt-8">
+                <p className="text-white text-xs font-medium leading-snug">{item.label}</p>
               </div>
-              <p className="text-center text-xs text-muted-foreground py-2 font-medium">{video.label}</p>
             </div>
           ))}
         </section>
