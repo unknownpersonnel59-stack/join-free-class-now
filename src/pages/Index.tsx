@@ -122,8 +122,15 @@ const Index = () => {
           <p className="text-xs text-muted-foreground mb-1">Your Host</p>
           <p className="text-primary font-bold text-lg mb-3">@OfficialFlexooo</p>
           <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-xs mx-auto">
-            I found a method that works — consistently. Now I'm teaching it for free.
+            I don't have a sad story to tell — we all know the struggle.
+            <br /><br />
+            But I found something that works. Consistently.
+            <br /><br />
+            And I'm teaching it for free.
+            <br /><br />
             No gatekeeping. No course fees. Just results.
+            <br /><br />
+            Are you ready? ⬇️
           </p>
           <CTAButton>JOIN FREE CLASS NOW →</CTAButton>
         </section>
