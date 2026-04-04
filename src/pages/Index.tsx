@@ -114,7 +114,7 @@ const Index = () => {
         <section className="text-center mb-10">
           <div className="w-24 h-24 mx-auto mb-4 rounded-full border-[3px] border-primary overflow-hidden bg-secondary">
             <img
-              src="https://courageous-kleicha-b4c7b0.netlify.app/host.jpg"
+              src="/images/host.jpg"
               alt="@OfficialFlexooo"
               className="w-full h-full object-cover"
               onError={(e) => {
@@ -144,13 +144,22 @@ const Index = () => {
         <section className="flex flex-col gap-3 mb-10">
           {videos.map((video, i) => (
             <div key={i} className="rounded-xl overflow-hidden bg-secondary border border-border">
-              <video
-                src={video.src}
-                controls
-                playsInline
-                preload="metadata"
-                className="w-full aspect-video object-cover"
-              />
+              <div className="relative w-full aspect-video bg-black/50 flex items-center justify-center">
+                <video
+                  src={video.src}
+                  preload="metadata"
+                  className="w-full h-full object-cover pointer-events-none"
+                  muted
+                  tabIndex={-1}
+                />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
+                    <svg viewBox="0 0 24 24" className="w-7 h-7 fill-white ml-1">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
               <p className="text-center text-xs text-muted-foreground py-2 font-medium">{video.label}</p>
             </div>
           ))}
