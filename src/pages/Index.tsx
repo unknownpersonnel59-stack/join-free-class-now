@@ -114,7 +114,7 @@ const Index = () => {
         <section className="text-center mb-10">
           <div className="w-24 h-24 mx-auto mb-4 rounded-full border-[3px] border-primary overflow-hidden bg-secondary">
             <img
-              src="https://courageous-kleicha-b4c7b0.netlify.app/host.jpg"
+              src="/images/host.jpg"
               alt="@OfficialFlexooo"
               className="w-full h-full object-cover"
               onError={(e) => {
