@@ -145,24 +145,46 @@ const Index = () => {
             What Students Are Saying
           </h2>
 
-          {/* Text testimonials */}
-          <div className="space-y-3 mb-6">
+          {/* WhatsApp-style chat testimonials */}
+          <div className="space-y-4 mb-6">
             {[
-              { name: "Adebayo T.", quote: "I had zero experience. After this class, I made my first ₦50K in two weeks using just my phone.", tag: "Beginner" },
-              { name: "Chioma N.", quote: "I was skeptical at first, but the step-by-step approach made everything clear. Now I earn consistently every month.", tag: "Student" },
-              { name: "Emeka O.", quote: "This training changed my perspective completely. I finally understand how people make money online.", tag: "Learner" },
+              { name: "Adebayo T.", message: "Bro I just made my first ₦50K 🤯 Two weeks after the class. I can't believe this is real", time: "10:42 AM", reply: "I had zero experience before this. Just followed the steps" },
+              { name: "Chioma N.", message: "I was sooo skeptical at first 😅 but the step-by-step approach made everything click", time: "2:15 PM", reply: "Now I earn consistently every month. Thank you 🙏" },
+              { name: "Emeka O.", message: "This training changed my whole perspective. I finally understand how people actually make money online", time: "6:33 PM", reply: "Wish I found this earlier fr" },
+              { name: "Blessing A.", message: "Just finished the class and WOW 🔥 Everything was so clear and simple to follow", time: "9:08 AM", reply: "Already started applying what I learned. Let's go! 💪" },
             ].map((t, i) => (
-              <div key={i} className="bg-card rounded-xl p-4 border border-border">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 rounded-full bg-accent/15 flex items-center justify-center text-accent font-bold text-xs">
+              <div key={i} className="rounded-xl overflow-hidden border border-border">
+                {/* Chat header */}
+                <div className="bg-[#075E54] px-3 py-2 flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-[10px]">
                     {t.name.charAt(0)}
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-foreground">{t.name}</p>
-                    <span className="text-[10px] text-accent">{t.tag}</span>
+                    <p className="text-white text-xs font-medium">{t.name}</p>
+                    <p className="text-white/60 text-[9px]">online</p>
                   </div>
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">"{t.quote}"</p>
+                {/* Chat body */}
+                <div className="bg-[#0B141A] px-3 py-3 space-y-1.5"
+                  style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }}
+                >
+                  {/* Received message */}
+                  <div className="max-w-[85%]">
+                    <div className="bg-[#202C33] rounded-lg rounded-tl-none px-3 py-2">
+                      <p className="text-[#E9EDEF] text-[13px] leading-relaxed">{t.message}</p>
+                      <p className="text-[#8696A0] text-[9px] text-right mt-0.5">{t.time}</p>
+                    </div>
+                  </div>
+                  {/* Follow-up message */}
+                  <div className="max-w-[85%]">
+                    <div className="bg-[#202C33] rounded-lg rounded-tl-none px-3 py-2">
+                      <p className="text-[#E9EDEF] text-[13px] leading-relaxed">{t.reply}</p>
+                      <div className="flex items-center justify-end gap-0.5 mt-0.5">
+                        <p className="text-[#8696A0] text-[9px]">{t.time}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
