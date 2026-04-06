@@ -167,29 +167,6 @@ const Index = () => {
             ))}
           </div>
 
-          {/* Image & Video proof gallery */}
-          <h3 className="text-sm font-semibold text-center mb-4 text-muted-foreground">Proof & Behind the Scenes</h3>
-          <div className="grid grid-cols-2 gap-2 mb-6">
-            {[
-              { type: "image" as const, src: "/images/proof1.jpg", label: "Living life on my own terms" },
-              { type: "image" as const, src: "/images/proof2.jpg", label: "Real results — same method you'll learn" },
-              { type: "video" as const, src: "/images/behind-the-scenes.mp4", label: "A day in the life" },
-              { type: "image" as const, src: "/images/proof3.jpg", label: "Goals unlocked" },
-              { type: "image" as const, src: "/images/proof4.jpg", label: "Experiences that matter" },
-              { type: "video" as const, src: "/images/day-in-the-life.mp4", label: "Behind the scenes" },
-            ].map((item, i) => (
-              <div key={i} className="rounded-xl overflow-hidden aspect-[3/4] bg-secondary border border-border relative">
-                {item.type === "image" ? (
-                  <img src={item.src} alt={item.label} className="w-full h-full object-cover" />
-                ) : (
-                  <video src={item.src} autoPlay loop muted playsInline className="w-full h-full object-cover" />
-                )}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 pt-8">
-                  <p className="text-white text-[11px] font-medium leading-snug">{item.label}</p>
-                </div>
-              </div>
-            ))}
-          </div>
 
           {/* Disclaimer */}
           <div className="bg-card rounded-xl p-4 border border-border text-center">
