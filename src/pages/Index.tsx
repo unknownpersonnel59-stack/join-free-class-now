@@ -197,13 +197,6 @@ const Index = () => {
               Examples shared are for educational purposes and do not guarantee results. Individual outcomes depend on effort and dedication.
             </p>
           </div>
-          </h2>
-          <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-            This training has helped many beginners understand how online income works and how to take their first steps.
-          </p>
-          <p className="text-[11px] text-muted-foreground/70">
-            Examples shared are for educational purposes and do not guarantee results.
-          </p>
         </section>
 
         {/* SECTION 5: FINAL CTA */}
