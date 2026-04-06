@@ -139,17 +139,64 @@ const Index = () => {
           </div>
         </section>
 
-        {/* SECTION 4: SOCIAL PROOF */}
-        <section className="mb-12 bg-card rounded-2xl p-6 border border-border text-center">
-          <h2 className="text-lg font-bold mb-3 text-foreground">
-            Real Learning Experience
+        {/* SECTION 4: TESTIMONIALS */}
+        <section className="mb-12">
+          <h2 className="text-lg font-bold text-center mb-6 text-foreground">
+            What Students Are Saying
           </h2>
-          <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-            This training has helped many beginners understand how online income works and how to take their first steps.
-          </p>
-          <p className="text-[11px] text-muted-foreground/70">
-            Examples shared are for educational purposes and do not guarantee results.
-          </p>
+
+          {/* Text testimonials */}
+          <div className="space-y-3 mb-6">
+            {[
+              { name: "Adebayo T.", quote: "I had zero experience. After this class, I made my first ₦50K in two weeks using just my phone.", tag: "Beginner" },
+              { name: "Chioma N.", quote: "I was skeptical at first, but the step-by-step approach made everything clear. Now I earn consistently every month.", tag: "Student" },
+              { name: "Emeka O.", quote: "This training changed my perspective completely. I finally understand how people make money online.", tag: "Learner" },
+            ].map((t, i) => (
+              <div key={i} className="bg-card rounded-xl p-4 border border-border">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 rounded-full bg-accent/15 flex items-center justify-center text-accent font-bold text-xs">
+                    {t.name.charAt(0)}
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">{t.name}</p>
+                    <span className="text-[10px] text-accent">{t.tag}</span>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">"{t.quote}"</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Image & Video proof gallery */}
+          <h3 className="text-sm font-semibold text-center mb-4 text-muted-foreground">Proof & Behind the Scenes</h3>
+          <div className="grid grid-cols-2 gap-2 mb-6">
+            {[
+              { type: "image" as const, src: "/images/proof1.jpg", label: "Living life on my own terms" },
+              { type: "image" as const, src: "/images/proof2.jpg", label: "Real results — same method you'll learn" },
+              { type: "video" as const, src: "/images/behind-the-scenes.mp4", label: "A day in the life" },
+              { type: "image" as const, src: "/images/proof3.jpg", label: "Goals unlocked" },
+              { type: "image" as const, src: "/images/proof4.jpg", label: "Experiences that matter" },
+              { type: "video" as const, src: "/images/day-in-the-life.mp4", label: "Behind the scenes" },
+            ].map((item, i) => (
+              <div key={i} className="rounded-xl overflow-hidden aspect-[3/4] bg-secondary border border-border relative">
+                {item.type === "image" ? (
+                  <img src={item.src} alt={item.label} className="w-full h-full object-cover" />
+                ) : (
+                  <video src={item.src} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                )}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 pt-8">
+                  <p className="text-white text-[11px] font-medium leading-snug">{item.label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Disclaimer */}
+          <div className="bg-card rounded-xl p-4 border border-border text-center">
+            <p className="text-[11px] text-muted-foreground/70 leading-relaxed">
+              Examples shared are for educational purposes and do not guarantee results. Individual outcomes depend on effort and dedication.
+            </p>
+          </div>
         </section>
 
         {/* SECTION 5: FINAL CTA */}
