@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { CheckCircle, Smartphone, BookOpen, Play, ArrowRight, Mail, Shield, FileText } from "lucide-react";
 
 const WHATSAPP_LINK = "https://chat.whatsapp.com/LihwSEwAtUd3ZxhSQym0wu?mode=gi_t";
 
@@ -22,165 +23,168 @@ const CountdownTimer = () => {
   const pad = (n: number) => n.toString().padStart(2, "0");
 
   return (
-    <div className="flex items-center justify-center gap-2 my-6">
+    <div className="flex items-center justify-center gap-3 my-6">
       {[
-        { value: time.hours, label: "HRS" },
-        { value: time.minutes, label: "MIN" },
-        { value: time.seconds, label: "SEC" },
+        { value: time.hours, label: "Hours" },
+        { value: time.minutes, label: "Minutes" },
+        { value: time.seconds, label: "Seconds" },
       ].map((item, i) => (
         <div key={i} className="flex flex-col items-center">
-          <div className="bg-secondary rounded-lg w-16 h-16 flex items-center justify-center border border-border">
-            <span className="text-2xl font-bold text-foreground font-mono">{pad(item.value)}</span>
+          <div className="bg-accent/10 rounded-xl w-18 h-18 flex items-center justify-center border border-accent/20">
+            <span className="text-2xl font-semibold text-accent font-mono">{pad(item.value)}</span>
           </div>
-          <span className="text-[10px] text-muted-foreground mt-1 tracking-widest">{item.label}</span>
+          <span className="text-[11px] text-muted-foreground mt-1.5">{item.label}</span>
         </div>
       ))}
     </div>
   );
 };
 
-const CTAButton = ({ children }: { children: React.ReactNode }) => (
+const CTAButton = ({ children, variant = "primary" }: { children: React.ReactNode; variant?: "primary" | "secondary" }) => (
   <a
     href={WHATSAPP_LINK}
     target="_blank"
     rel="noopener noreferrer"
-    className="block w-full bg-primary text-primary-foreground font-bold text-base py-4 px-6 rounded-xl text-center hover:brightness-110 transition-all duration-200 shadow-[0_0_30px_hsl(145,100%,45%,0.3)]"
+    className={`inline-flex items-center justify-center gap-2 w-full font-semibold text-base py-4 px-6 rounded-2xl text-center transition-all duration-200 ${
+      variant === "primary"
+        ? "bg-accent text-accent-foreground hover:opacity-90 shadow-sm"
+        : "bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20"
+    }`}
   >
     {children}
+    <ArrowRight className="w-4 h-4" />
   </a>
 );
-
-const galleryItems = [
-  { type: "image", src: "/images/proof1.jpg", label: "✅ Living life on my own terms" },
-  { type: "image", src: "/images/proof2.jpg", label: "💰 ₦6M in 29 days — same method you'll learn" },
-  { type: "video", src: "/images/behind-the-scenes.mp4", label: "🎬 A day in the life — making money online" },
-  { type: "image", src: "/images/proof3.jpg", label: "🚗 ₦100M dream car — unlocked" },
-  { type: "image", src: "/images/proof4.jpg", label: "🔥 Experiences money can buy" },
-  { type: "video", src: "/images/day-in-the-life.mp4", label: "🎥 Behind the scenes of my online business" },
-];
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="max-w-md mx-auto px-4 py-6">
+      <div className="max-w-lg mx-auto px-5 py-8">
 
-        {/* Live Badge */}
+        {/* Timer badge */}
         <div className="flex justify-center mb-6">
-          <div className="flex items-center gap-2 bg-destructive/15 border border-destructive/30 rounded-full px-4 py-2">
-            <span className="w-2 h-2 bg-destructive rounded-full animate-pulse-live" />
-            <span className="text-xs font-semibold text-destructive tracking-wide">
-              LIVE — 20,000+ already registered
+          <div className="flex items-center gap-2 bg-accent/10 border border-accent/20 rounded-full px-4 py-2">
+            <span className="w-2 h-2 bg-accent rounded-full animate-pulse-live" />
+            <span className="text-xs font-medium text-accent">
+              Class starts soon — limited spots
             </span>
           </div>
         </div>
 
-        {/* Hero */}
-        <section className="text-center mb-8">
-          <h1 className="text-3xl font-extrabold leading-tight mb-4">
-            Make <span className="text-primary">₦500K+/Month</span> Online.{" "}
-            <span className="text-primary">Free Class.</span>
+        {/* SECTION 1: HERO */}
+        <section className="text-center mb-12">
+          <h1 className="text-2xl sm:text-3xl font-bold leading-tight mb-4 text-foreground">
+            Learn How to Get Started Making Money Online Using Just Your Phone
           </h1>
-          <p className="text-muted-foreground text-sm leading-relaxed">
-            No degree. No startup capital. Just your phone, internet, and this one class.
+          <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mx-auto mb-2">
+            Join a free beginner-friendly class that explains simple online methods you can start from anywhere.
           </p>
+          <div className="flex items-center justify-center gap-1 text-[11px] text-muted-foreground mb-4">
+            <span>No experience needed</span>
+            <span>•</span>
+            <span>Beginner friendly</span>
+            <span>•</span>
+            <span>Learn at your own pace</span>
+          </div>
 
           <CountdownTimer />
 
-          <CTAButton>JOIN FREE CLASS NOW →</CTAButton>
+          <CTAButton>Join Free Class Now</CTAButton>
 
-          <p className="text-[11px] text-muted-foreground mt-3">
-            100% free · No hidden charges · Join from your phone
+          <p className="text-[11px] text-muted-foreground mt-4 max-w-xs mx-auto leading-relaxed">
+            This is a free educational training. Results are not guaranteed and depend on individual effort.
           </p>
         </section>
 
-        {/* Stats Bar */}
-        <section className="grid grid-cols-3 gap-2 mb-10">
-          {[
-            { value: "₦6M+", label: "Made in 29 Days" },
-            { value: "20K+", label: "Registered" },
-            { value: "FREE", label: "No Catch" },
-          ].map((stat, i) => (
-            <div key={i} className="bg-secondary rounded-xl p-3 text-center border border-border">
-              <div className="text-primary font-bold text-lg">{stat.value}</div>
-              <div className="text-muted-foreground text-[10px] mt-0.5">{stat.label}</div>
-            </div>
-          ))}
-        </section>
-
-        {/* Host Section */}
-        <section className="text-center mb-10">
-          <div className="w-24 h-24 mx-auto mb-4 rounded-full border-[3px] border-primary overflow-hidden bg-secondary">
-            <img
-              src="/images/host.jpg"
-              alt="@OfficialFlexooo"
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                (e.target as HTMLImageElement).style.display = 'none';
-              }}
-            />
-          </div>
-          <p className="text-xs text-muted-foreground mb-1">Your Host</p>
-          <p className="text-primary font-bold text-lg mb-3">@OfficialFlexooo</p>
-          <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-xs mx-auto">
-            I don't have a sad story to tell — we all know the struggle.
-            <br />But I found something that works. Consistently.
-            <br />And I'm teaching it for free.
-            <br />No gatekeeping. No course fees. Just results.
-            <br />Are you ready? ⬇️
-          </p>
-          <CTAButton>JOIN FREE CLASS NOW →</CTAButton>
-        </section>
-
-        {/* Gallery Grid */}
-        <section className="grid grid-cols-2 gap-2 mb-10">
-          {galleryItems.map((item, i) => (
-            <div key={i} className="rounded-xl overflow-hidden aspect-[3/4] bg-secondary border border-border relative group">
-              {item.type === "image" ? (
-                <img src={item.src} alt={item.label} className="w-full h-full object-cover" />
-              ) : (
-                <video
-                  src={item.src}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                />
-              )}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 pt-8">
-                <p className="text-white text-xs font-medium leading-snug">{item.label}</p>
+        {/* SECTION 2: WHAT YOU'LL LEARN */}
+        <section className="mb-12">
+          <h2 className="text-lg font-bold text-center mb-6 text-foreground">
+            What You'll Learn in This Free Class
+          </h2>
+          <div className="space-y-3">
+            {[
+              { icon: Smartphone, text: "How beginners are getting started online" },
+              { icon: BookOpen, text: "Simple ways to earn using your phone" },
+              { icon: Play, text: "Tools and platforms used daily" },
+              { icon: CheckCircle, text: "Step-by-step guidance to help you begin" },
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-3 bg-card rounded-xl p-4 border border-border">
+                <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <item.icon className="w-4 h-4 text-accent" />
+                </div>
+                <p className="text-sm text-foreground leading-relaxed">{item.text}</p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </section>
 
-        <section className="text-center mb-10">
-          <p className="text-foreground font-semibold text-lg mb-2">
-            Everything you just saw started with one decision…
+        {/* SECTION 3: HOW IT WORKS */}
+        <section className="mb-12">
+          <h2 className="text-lg font-bold text-center mb-6 text-foreground">
+            How It Works
+          </h2>
+          <div className="space-y-4">
+            {[
+              { step: "1", text: "Click the button to join the free class" },
+              { step: "2", text: "Watch the training and understand the process" },
+              { step: "3", text: "Decide how you want to get started" },
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold text-sm shrink-0">
+                  {item.step}
+                </div>
+                <p className="text-sm text-foreground">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* SECTION 4: SOCIAL PROOF */}
+        <section className="mb-12 bg-card rounded-2xl p-6 border border-border text-center">
+          <h2 className="text-lg font-bold mb-3 text-foreground">
+            Real Learning Experience
+          </h2>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+            This training has helped many beginners understand how online income works and how to take their first steps.
           </p>
-          <p className="text-muted-foreground text-sm mb-6">
-            Don't watch from the sidelines. Get in now — it's free.
-          </p>
-          <CTAButton>I WANT THIS LIFE — JOIN FREE →</CTAButton>
-          <p className="text-[11px] text-muted-foreground mt-3">
-            100% free · No hidden charges · Join from your phone
+          <p className="text-[11px] text-muted-foreground/70">
+            Examples shared are for educational purposes and do not guarantee results.
           </p>
         </section>
+
+        {/* SECTION 5: FINAL CTA */}
+        <section className="text-center mb-12">
+          <h2 className="text-xl font-bold mb-3 text-foreground">
+            Ready to Learn Something New?
+          </h2>
+          <p className="text-sm text-muted-foreground mb-6">
+            Join the free class now and see how it works step by step.
+          </p>
+          <CTAButton variant="primary">Reserve My Free Spot</CTAButton>
+        </section>
+
+        {/* SECTION 6: FOOTER */}
+        <footer className="border-t border-border pt-6 pb-4 text-center space-y-3">
+          <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">
+            <a href="mailto:flexooo@gmail.com" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              <Mail className="w-3.5 h-3.5" />
+              Contact
+            </a>
+            <a href="#" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              <Shield className="w-3.5 h-3.5" />
+              Privacy Policy
+            </a>
+            <a href="#" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              <FileText className="w-3.5 h-3.5" />
+              Terms
+            </a>
+          </div>
+          <p className="text-[10px] text-muted-foreground/60 max-w-xs mx-auto leading-relaxed">
+            This website is not affiliated with TikTok. All information provided is for educational purposes only.
+          </p>
+        </footer>
 
       </div>
-
-      {/* Floating WhatsApp Button */}
-      <a
-        href={WHATSAPP_LINK}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-200 z-50"
-        aria-label="Join WhatsApp Group"
-      >
-        <svg viewBox="0 0 24 24" className="w-7 h-7 fill-white">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-      </a>
     </div>
   );
 };
